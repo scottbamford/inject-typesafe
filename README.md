@@ -33,8 +33,6 @@ We do not:
 * Limit ourselves use to only object orientated code.
 * Tell you how you should structure your code just because you use this library for depdency injection.
 
-```
-
 ## Installation
 
 Install inject-typesafe locally within your project folder, like so:
