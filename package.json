@@ -1,0 +1,45 @@
+{
+  "name": "inject-typesafe",
+  "version": "2.1.0",
+  "description": "Inject Typesafe is a 100% typesafe dependency injection framework for typescript that takes a alternative very lightweight approach to dependency injection that feels more like state management than a black box.",
+  "main": "dist/lib/commonjs/index.js",
+  "module": "dist/lib/esm/index.js",
+  "types": "dist/lib/esm/index.d.ts",
+  "license": "MIT",
+  "author": {
+    "name": "Scott Bamford",
+    "email": "scott@ambidect.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottbamford/inject-typesafe.git"
+  },
+  "keywords": [
+    "dependency-injection",
+    "type-safe",
+    "dependency",
+    "inject",
+    "typesafe",
+    "typescript",
+    "IoC",
+    "di"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/scottbamford/inject-typesafe/issues"
+  },
+  "homepage": "https://github.com/scottbamford/inject-typesafe/#readme",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsc && tsc -m esnext --outDir ./dist/lib/esm"
+  },
+  "dependencies": {
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "typescript": "3.4.5",
+    "rimraf": "^2.6.3"
+  }
+}

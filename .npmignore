@@ -1,0 +1,15 @@
+# Don't include modules.
+node_modules
+
+# Don't include source.
+src
+
+# Don't include visual studio project files and temprory files
+*.njsproj
+*.njsproj.user
+bin
+obj
+
+# Don't include any previous pack files we haven't removed.
+*.tgz
+
