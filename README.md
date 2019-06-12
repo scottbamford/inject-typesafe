@@ -104,7 +104,7 @@ You can also split your services up into smaller chunks if you need to, see "Can
 
 ## Usage with react
 
-If you use react, we provide the inject-typesafe-react package to give you Context, hook, and high-order-component (hoc) to work with your
+If you use react, we provide the [inject-typesafe-react](https://github.com/scottbamford/inject-typesafe-react) package to give you Context, hook, and high-order-component (hoc) to work with your
 dependencies anywhere:
 
 ```ts
