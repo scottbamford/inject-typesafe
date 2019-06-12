@@ -375,7 +375,7 @@ const sayYo = services.sayYo();
 
 // Call the functions (still typesafe...)
 sayYo('Steve'); // Returns: Yo Steve its Fred, how are you?
-sayYo('Laura', 'Bob); // Returns: Yo Steve its Bob, how are you?
+sayYo('Laura', 'Bob'); // Returns: Yo Steve its Bob, how are you?
 ```
 
 ### Can I seperate my dependencies out into sepreate files and types?
