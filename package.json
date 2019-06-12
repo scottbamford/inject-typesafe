@@ -1,6 +1,6 @@
 {
   "name": "inject-typesafe",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Inject Typesafe is a 100% typesafe dependency injection framework for typescript that takes a alternative very lightweight approach to dependency injection that feels more like state management than a black box.",
   "main": "dist/lib/commonjs/index.js",
   "module": "dist/lib/esm/index.js",
