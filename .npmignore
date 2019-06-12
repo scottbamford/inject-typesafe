@@ -13,3 +13,8 @@ obj
 # Don't include any previous pack files we haven't removed.
 *.tgz
 
+# Don't include visual studio files
+.vs
+
+# Ignore git
+.git
