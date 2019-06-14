@@ -216,7 +216,7 @@ const MyComponent = (props: MyComponentProps) => {
 	});
 
 	return (
-		<div style={color: color.hex}>
+		<div style={{color: color.hex}}>
 			I have a {animal.describe()}.
 		</div>
 		);
