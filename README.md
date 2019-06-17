@@ -95,10 +95,10 @@ let myAnimal = services.animal();
 // myAnimal is now resolved and initalised as new Dog(new Red())
 ```
 
-And at every state things are kept typesafe.
+And at every stage things are kept typesafe.
 
 By convention the decleration (AppServices in the example) and configuration (configureServices in the example) are usually
-placed in a file configureServices.ts in the root of your file, but you can store them anywhere you want.
+placed in a file configureServices.ts in the root of your project, but you can store them anywhere you want.
 
 You can also split your services up into smaller chunks if you need to, see "Can I seperate my dependencies out?" in the FAQ.
 
