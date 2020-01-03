@@ -113,52 +113,25 @@ const serviceProvider = new ServiceProvider(configureServices);
 
 export const App = (props: any) => {
     return (
-        <InjectContext.Provider value={serviceProvider}>
+        <ServiceProviderContext.Provider value={serviceProvider}>
 			<TheRestOfYourAppGoesHere />
-        </InjectContext.Provider>
+        </ServiceProviderContext.Provider>
     );
 };
 ```
 
-### Higher-order component
-
-Using a higher order component to set your props to services:
-
-```ts
-import { withInjectedProps } from 'inject-typesafe-react';
-
-interface MyComponentProps {
-	animal: Animal
-}
-
-const _MyComponent = (props: MyComponentProps) => {
-	return (
-		<div>
-			I have a {animal.describe()}.
-		</div>
-		);
-};
-
-export const MyComponent = withInjectedProps<MyComponentProps, AppServices>(services => ({
-    animal: services.animal()
-}))(_MyComponent);
-```
-
-This use of a higher order component to resolve dependencies should look very familiar if you've ever used redux and its connect() method
-to resolve application state into props before.
-
 ### Hooks
 
-You can also use a hook:
+Using a hook you can get access to the services provided by the ServiceProvider from the context:
 
 ```ts
-import { withInjectedProps } from 'inject-typesafe-react';
+import { useServices } from 'inject-typesafe-react';
 
 interface MyComponentProps {
 }
 
 const MyComponent = (props: MyComponentProps) => {
-	const animal = useInjected(services => services.animal());
+	const animal = useServices(services => services.animal());
 
 	return (
 		<div>
@@ -171,25 +144,24 @@ const MyComponent = (props: MyComponentProps) => {
 You can also resolve multiple dependencies at the same time:
 
 ```ts
-	const { animal, color } = useInjected(services => { services.animal(), services.color() });
+	const { animal, color } = useServices(services => { services.animal(), services.color() });
 ```
 
 When you do this all dependencies resolved at the same time will share the same scope (i.e. the Color used by animal will be the exact same
 instance of Red() as color.)
 
-When using any dependency injection within a function (such as a using our hook) we recommend (but don't require) that you still expose
-your dependency on Animal through your props, and only use the value direct from services when you are not passed in a value.  This helps
-in avoiding hidden dependencies and falling into using useInjected() as a service locator.
+When using any dependency injection within a function (such as a using our hook) you will sometimes want to still expose
+your dependency on Animal through your props, and only use the value direct from services when you are not passed in a value.  This can be acheived by performing a check in the useServices() call, for example:
 
 ```ts
-import { withInjectedProps } from 'inject-typesafe-react';
+import { useServices } from 'inject-typesafe-react';
 
 interface MyComponentProps {
 	animal?: Animal
 }
 
 const MyComponent = (props: MyComponentProps) => {
-	const animal = useInjected(services => props.animal || services.animal());
+	const animal = useServices(services => props.animal || services.animal());
 
 	return (
 		<div>
@@ -202,7 +174,7 @@ const MyComponent = (props: MyComponentProps) => {
 Or for multiple dependencies:
 
 ```ts
-import { withInjectedProps } from 'inject-typesafe-react';
+import { useServices } from 'inject-typesafe-react';
 
 interface MyComponentProps {
 	animal?: Animal,
@@ -222,6 +194,34 @@ const MyComponent = (props: MyComponentProps) => {
 		);
 };
 ```
+
+### Higher-order component
+
+As an alternative you can use a higher order component to set your props to services:
+
+```ts
+import { withServiceProps } from 'inject-typesafe-react';
+
+interface MyComponentProps {
+	animal: Animal
+}
+
+const _MyComponent = (props: MyComponentProps) => {
+	return (
+		<div>
+			I have a {animal.describe()}.
+		</div>
+		);
+};
+
+export const MyComponent = withServiceProps<MyComponentProps, AppServices>(services => ({
+    animal: services.animal()
+}))(_MyComponent);
+```
+
+This use of a higher order component to resolve dependencies should look very familiar if you've ever used redux and its connect() method
+to resolve application state into props before.
+
 
 ## FAQ
 
